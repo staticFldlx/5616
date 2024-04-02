@@ -95,7 +95,7 @@ class StealthConn(object):
             if abs(current_time - timestamp) > 60:
                 raise ValueError("Timestamp verification failed!")
 
-            original_msg = original_msg[8:]  # 去除时间戳
+            original_msg = original_msg[8:]  # remove timestamp
 
             if self.verbose:
                 print()
