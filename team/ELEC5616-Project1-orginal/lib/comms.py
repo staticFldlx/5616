@@ -21,7 +21,7 @@ class StealthConn(object):
 
         # This can be broken into code run just on the server or just on the clientasdsad
         if self.server or self.client:
-            my_public_key, my_private_key = create_dh_key()  # 生成DH密钥对
+            my_public_key, my_private_key = create_dh_key()  # Generate DH key pairs
             # Send them our public key
             self.send(bytes(str(my_public_key), "ascii"))
             print(my_public_key)
@@ -35,7 +35,7 @@ class StealthConn(object):
     def send(self, data):
         if self.shared_secret != None:
             # Add a time stamp
-            timestamp = struct.pack("d", time.time())  # 使用double类型存储时间戳
+            timestamp = struct.pack("d", time.time())  # Storing timestamps using the double type
             data = timestamp + data
             # Authenticate messages using HMAC
             mac = HMAC.new(self.shared_secret, digestmod=SHA256)
